@@ -1,0 +1,96 @@
+
+.container-formPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    background-image: url('/wallpaperwideForm.jpg');
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+}
+
+.container-Tform {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.container-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-image: url('/wallpaperForm.jpg');
+    background-position: center;
+    background-size: cover;
+    color: #f60;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    width: 500px;
+    padding: 3rem;
+}
+
+.container-inputs {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-inputs input {
+    height: 2.5rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.p-forgetP {
+    cursor: pointer;
+    color: #00aaff;
+    transition: color 0.5s ease;
+}
+
+.p-forgetP:hover {
+    color: #003cff;
+}
+
+.button-submit {
+    width: 12rem;
+    height: 2.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    font-family: "Jersey", sans-serif;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease, scale 0.5s ease;
+}
+
+.button-submit:hover {
+    background-color: #f60;
+    color: #000;
+    scale: 1.1;
+}
+
+.Red-form {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.Red-form span {
+    cursor: pointer;
+    color: #00aaff;
+    transition: color 0.5s ease, scale 0.5s ease;
+}
+
+.Red-form span:hover {
+    color: #003cff;
+    scale: 1.1;
+}

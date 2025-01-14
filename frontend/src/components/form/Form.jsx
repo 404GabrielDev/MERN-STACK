@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./Form.css";
 import axios from "axios";
+import {ToastContainer, toast} from 'react-toastify';
+
 
 const Form = () => {
-  const [state, setState] = useState("Register");
+  const [state, setState] = useState("Registrar");
 
   const [formData, setFormData] = useState({
     username: "",
@@ -23,21 +25,38 @@ const Form = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/registrar`,
+        formData,
+        { withCredentials: true }
+      );
+      const user = response.data;
+      toast.success("Conta criada com sucesso!")
+
+    } catch (error) {
+      console.log(error);
+      toast.error("Erro ao criar conta. Tente novamente!")
+    }
   };
 
   return (
-    <div>
+    <div className="container-formPage">
       <div className="container-Tform">
-        <h2>{state === "Register" ? "Criar conta" : "Logar"}</h2>
-        <p>{state === "Register" ? "Crie sua conta" : "Logue na sua conta"}</p>
+        <ToastContainer />
+        <h2>{state === "Registrar" ? "Criar conta" : "Logar"}</h2>
+        <p>{state === "Registrar" ? "Crie sua conta" : "Logue na sua conta"}</p>
       </div>
 
-      <form onSubmit={submitHandler}>
-        {state === "Register" && (
-          <div>
-            <label>
-              username:
+      <form className="container-form" onSubmit={submitHandler}>
+        {state === "Registrar" && (
+          <div className="container-inputs">
+            <label htmlFor="username">
+              Username:
+              </label>
               <input
+                id="username"
                 name="username"
                 type="text"
                 placeholder="username"
@@ -45,14 +64,15 @@ const Form = () => {
                 value={formData.username}
                 onChange={handleChange}
               />
-            </label>
           </div>
         )}
 
-        <div>
-          <label>
-            email:
+        <div className="container-inputs">
+          <label htmlFor="email">
+            Email:
+            </label>
             <input
+              id="email"
               name="email"
               type="text"
               placeholder="email"
@@ -60,13 +80,15 @@ const Form = () => {
               value={formData.email}
               onChange={handleChange}
             />
-          </label>
+          
         </div>
 
-        <div>
-          <label>
-            password:
+        <div className="container-inputs">
+          <label htmlFor="password">
+            Password:
+            </label>
             <input
+              id="password"
               name="password"
               type="password"
               placeholder="password"
@@ -74,28 +96,38 @@ const Form = () => {
               value={formData.password}
               onChange={handleChange}
             />
-          </label>
+          
         </div>
 
-        <div>
-          <label>
+        <div className="container-inputs">
+          <label htmlFor="passwordConfirm">
             Password Confirm:
+            </label>
             <input
+              id="passwordConfirm"
               name="passwordConfirm"
               type="password"
               placeholder="Password Confirm"
               required
-              value={formData.password}
+              value={formData.passwordConfirm}
               onChange={handleChange}
             />
-          </label>
         </div>
 
-        <p>Esqueceu a senha?</p>
+        <p className="p-forgetP">Esqueceu a senha?</p>
 
-        <button>{state}</button>
-
+        <button className="button-submit" type="submit">{state}</button>
       </form>
+      {state === 'Registrar' ? (
+        <p className="Red-form">Já tem uma conta?
+            <span onClick={() => setState("Login")}>Logue aqui!</span>
+        </p>
+      ): (
+        <p className="Red-form">
+          Não tem uma conta?
+          <span onClick={() => setState("Registrar")}>Se Registre aqui!</span>
+        </p>
+      )}
     </div>
   );
 };
