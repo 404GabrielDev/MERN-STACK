@@ -1,5 +1,6 @@
 import Header from "./components/navbar/header"
-import { Routes, Route, Form } from "react-router-dom"
+import { Routes, Route} from "react-router-dom"
+import Form from "./components/form/Form"
 
 function App() {
   
