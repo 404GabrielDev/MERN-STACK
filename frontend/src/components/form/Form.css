@@ -4,11 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #000;
-    background-image: url('/wallpaperwideForm.jpg');
-    background-position: center;
-    background-size: cover;
-    color: #fff;
+    background-color: #dedede;
 }
 
 .container-Tform {
@@ -25,9 +21,7 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    background-image: url('/wallpaperForm.jpg');
-    background-position: center;
-    background-size: cover;
+    background-color: #fff;
     color: #f60;
     font-size: 1.2rem;
     border-radius: 1rem;
@@ -47,12 +41,15 @@
     text-align: center;
     border-radius: 0.5rem;
     border: none;
+    background-color: rgb(202, 202, 202);
+    color: #fff;
 }
 
 .p-forgetP {
     cursor: pointer;
     color: #00aaff;
     transition: color 0.5s ease;
+    text-decoration: none;
 }
 
 .p-forgetP:hover {
