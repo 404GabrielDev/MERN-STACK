@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Form.css";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
+import { Link } from "react-router-dom";
 
 
 const Form = () => {
@@ -44,7 +45,6 @@ const Form = () => {
   return (
     <div className="container-formPage">
       <div className="container-Tform">
-        <ToastContainer />
         <h2>{state === "Registrar" ? "Criar conta" : "Logar"}</h2>
         <p>{state === "Registrar" ? "Crie sua conta" : "Logue na sua conta"}</p>
       </div>
@@ -114,7 +114,7 @@ const Form = () => {
             />
         </div>
 
-        <p className="p-forgetP">Esqueceu a senha?</p>
+        <p className="p-forgetP"><Link to = '/forgetPassword' className="p-forgetP">Esqueceu a senha?</Link></p>
 
         <button className="button-submit" type="submit">{state}</button>
       </form>
