@@ -80,3 +80,30 @@ export const forgetPassword = catchAsync(async (req, res, next) => {
         return next(new appError("Houve um erro ao enviar o email, Por favor , tente novamente!", 400))
     }
 })
+
+//redefinir senha
+export const resetPassword = catchAsync(async(req, res, next) => {
+    const{email, otp, password, passwordConfirm} = req.body
+
+    const user = await User.findOne({
+        email,
+        resetPasswordOTP:otp,
+        resetPasswordOTPExpires:{$gt:Date.now()}
+    })
+
+    console.log(user)
+
+    if(!user) return next(new appError("Nenhum usuario encontrado", 400))
+
+    user.password=password
+    user.passwordConfirm=passwordConfirm
+    user.resetPasswordOTP=undefined
+    user.resetPasswordOTPExpires=undefined
+    
+    await user.save()
+
+    res.json({
+        status:200,
+        message:"Senha mudada com sucesso!"
+    })
+})
