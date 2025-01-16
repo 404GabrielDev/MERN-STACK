@@ -2,10 +2,13 @@ import { useState } from "react";
 import "./Form.css";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 
-const Form = () => {
+const Form = ({setUsername}) => {
+  console.log(setUsername)
+  const navigate = useNavigate()
   const [state, setState] = useState("Registrar");
 
   const [formData, setFormData] = useState({
@@ -15,13 +18,26 @@ const Form = () => {
     passwordConfirm: "",
   });
 
+  const[dataLogin, setDataLogin] = useState({
+    email:"",
+    password:""
+  })
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if(state === "Registrar") {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    } else if (state === "login") {
+      setDataLogin({
+        ...dataLogin,
+        [name]: value
+      })
+    }
+    
   };
 
   const submitHandler = async (e) => {
@@ -29,12 +45,19 @@ const Form = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/registrar`,
-        formData,
+        `${import.meta.env.VITE_BACKEND_URL}/${state === "Registrar" ? "registrar" :"login"}`,
+        state === "Registrar" ? formData : dataLogin,
         { withCredentials: true }
       );
-      const user = response.data;
-      toast.success("Conta criada com sucesso!")
+
+      if(state === "Registrar") {
+        toast.success("Conta criada com sucesso!")
+        setState("login")
+      } else {
+        setUsername(formData.username);
+        toast.success("login realizado com sucesso!")
+        navigate('/')
+      }
 
     } catch (error) {
       console.log(error);
@@ -50,7 +73,8 @@ const Form = () => {
       </div>
 
       <form className="container-form" onSubmit={submitHandler}>
-        {state === "Registrar" && (
+        {state === "Registrar" ? (
+          <>
           <div className="container-inputs">
             <label htmlFor="username">
               Username:
@@ -65,9 +89,8 @@ const Form = () => {
                 onChange={handleChange}
               />
           </div>
-        )}
 
-        <div className="container-inputs">
+          <div className="container-inputs">
           <label htmlFor="email">
             Email:
             </label>
@@ -113,6 +136,42 @@ const Form = () => {
               onChange={handleChange}
             />
         </div>
+          </>       
+        ) : (
+          <>
+          <div className="container-inputs">
+          <label htmlFor="email">
+            Email:
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="text"
+              placeholder="email"
+              required
+              value={dataLogin.email}
+              onChange={handleChange}
+            />
+          
+        </div>
+
+        <div className="container-inputs">
+          <label htmlFor="password">
+            Password:
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="password"
+              required
+              value={dataLogin.password}
+              onChange={handleChange}
+            />
+          
+        </div>
+          </>
+        )}
 
         <p className="p-forgetP"><Link to = '/forgetPassword' className="p-forgetP">Esqueceu a senha?</Link></p>
 
@@ -120,7 +179,7 @@ const Form = () => {
       </form>
       {state === 'Registrar' ? (
         <p className="Red-form">Já tem uma conta?
-            <span onClick={() => setState("Login")}>Logue aqui!</span>
+            <span onClick={() => setState("login")}>Logue aqui!</span>
         </p>
       ): (
         <p className="Red-form">
