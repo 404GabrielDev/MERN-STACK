@@ -63,6 +63,7 @@ const ForgetPassoword = () => {
         { withCredentials: true }
       );
       toast.success("Senha alterada com sucesso!");
+      toast.success("Senha alterada com sucesso! Use sua nova senha para fazer login e acessar sua conta!")
       navigate('/')
     } catch (error) {
       console.log(error);

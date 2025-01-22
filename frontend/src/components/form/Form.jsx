@@ -4,12 +4,14 @@ import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
 import { Link, useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import useAuth from "../AuthContext/useAuth";
 
 
 const Form = ({setUsername}) => {
   console.log(setUsername)
   const navigate = useNavigate()
   const [state, setState] = useState("Registrar");
+  const {setUser} = useAuth()
 
   const [formData, setFormData] = useState({
     username: "",
@@ -54,9 +56,15 @@ const Form = ({setUsername}) => {
         toast.success("Conta criada com sucesso!")
         setState("login")
       } else {
-        setUsername(formData.username);
+        const {username, email} = response.data
+
+        setUsername(username);
+        setUser({
+          username,
+          email,
+        })
         toast.success("login realizado com sucesso!")
-        navigate('/')
+        navigate('/')   
       }
 
     } catch (error) {
@@ -176,8 +184,8 @@ const Form = ({setUsername}) => {
         <p className="p-forgetP"><Link to = '/forgetPassword' className="p-forgetP">Esqueceu a senha?</Link></p>
 
         <button className="button-submit" type="submit">{state}</button>
-      </form>
-      {state === 'Registrar' ? (
+
+        {state === 'Registrar' ? (
         <p className="Red-form">Já tem uma conta?
             <span onClick={() => setState("login")}>Logue aqui!</span>
         </p>
@@ -187,6 +195,7 @@ const Form = ({setUsername}) => {
           <span onClick={() => setState("Registrar")}>Se Registre aqui!</span>
         </p>
       )}
+      </form>
     </div>
   );
 };

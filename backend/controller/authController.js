@@ -77,7 +77,7 @@ export const login = catchAsync(async(req, res, next) => {
     if(!user || !(await user.correctPassword(password, user.password))) {
         return next(new appError("Email ou senha incorretos", 401))
     }
-    res.json({status:200, message:"Logado com sucesso"})
+    res.json({status:200, message:"Logado com sucesso", username:user.username, email:user.email})
 })
 
 export const sendOtpEmail = catchAsync(async(req, res, next) => {
