@@ -56,7 +56,12 @@
     border-radius: 0.5rem;
     border: none;
     background-color: rgb(202, 202, 202);
-    color: #fff;
+    color: #000000;
+}
+
+.container-inputs input::placeholder{
+    font-size: 1rem;
+    color: rgb(126, 126, 126);
 }
 
 .p-forgetP {
