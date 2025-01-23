@@ -5,6 +5,7 @@ import { generateOtp } from "../utils/generateOtp.js";
 import sendEmail from "../utils/email.js";
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
+import Blacklist from "../models/blacklist.js";
 
 dotenv.config()
 
@@ -79,6 +80,8 @@ export const login = catchAsync(async(req, res, next) => {
     }
     res.json({status:200, message:"Logado com sucesso", username:user.username, email:user.email})
 })
+
+
 
 export const sendOtpEmail = catchAsync(async(req, res, next) => {
     const {email} = req.body
@@ -222,5 +225,25 @@ export const resetPassword = catchAsync(async(req, res, next) => {
     res.json({
         status:200,
         message:"Senha mudada com sucesso!"
+    })
+})
+
+export const logout = catchAsync(async(req, res, next) => {
+    const token = req.cookies.token || req.headers.authorization?.split(" ")[1]
+
+    if(!token) {
+        return next(new appError("Token não encontrado, logout invalido", 400))
+    }
+
+    await Blacklist.create({token, expiresAt: jwt.decode(token).exp * 1000})
+
+    res.cookie("token", "loggedout", {
+        expires: new Date(Date.now() + 10 * 1000),
+        httpOnly:true,
+        secure:process.env.NODE_ENV === "production",
+    });
+
+    res.status(200).json({
+        message:"Deslogado com sucesso"
     })
 })
