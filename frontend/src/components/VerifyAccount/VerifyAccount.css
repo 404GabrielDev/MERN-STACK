@@ -109,3 +109,22 @@
     width: 12rem;
     height: 2rem;
 }
+
+.skipVerify {
+    margin-top: 2rem;
+}
+
+.link-v2 {
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid red;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+.link-v2:hover {
+    background-color: #00a6ff;
+    color: rgb(0, 0, 0);
+    border: 2px solid #f60;
+}

@@ -38,7 +38,9 @@ const createSendToken = (User, statusCode, res, message) => {
         message:message,
         token,
         data: {
-            user:User,
+            username:User.username,
+            email:User.email,
+            isVerified:User.isVerified
         }
     })
 }
@@ -78,11 +80,11 @@ export const login = catchAsync(async(req, res, next) => {
     if(!user || !(await user.correctPassword(password, user.password))) {
         return next(new appError("Email ou senha incorretos", 401))
     }
-    res.json({status:200, message:"Logado com sucesso", username:user.username, email:user.email})
+    res.json({status:200, message:"Logado com sucesso", username:user.username, email:user.email, isVerified:user.isVerified})
 })
 
 
-
+//enviar codico OTP
 export const sendOtpEmail = catchAsync(async(req, res, next) => {
     const {email} = req.body
 

@@ -35,7 +35,7 @@ nav {
     color: #f60;
 }
 
-.container-header button {
+#button-contact button {
     border: none;
     border: 2px solid rgb(0, 255, 106);
     width: 10rem;
@@ -47,10 +47,27 @@ nav {
     transition: color 0.5s ease, background-color 0.5s ease, border 0.5s ease, scale 0.5s ease;
 }
 
-.container-header button:hover {
+#button-contact button:hover {
     color: #f60;
     border: 2px solid rgb(0, 191, 255);
     scale: 1.1;
+}
+
+#logout {
+    border: none;
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    transition: transform 0.5s ease, border 0.5s ease, color 0.5s ease, border-radius 0.5s ease, padding 0.5s ease;
+}
+
+#logout:hover {
+    padding: 0.5rem;
+    border: 2px solid red;
+    border-radius: 0.2rem;
+    transform: scale(1.1);
+    color: #f60;
 }
 
 .container-profile {

@@ -11,7 +11,7 @@ const Form = ({setUsername}) => {
   console.log(setUsername)
   const navigate = useNavigate()
   const [state, setState] = useState("Registrar");
-  const {setUser} = useAuth()
+  const {setUser, loginUser, loading, setLoading} = useAuth()
 
   const [formData, setFormData] = useState({
     username: "",
@@ -45,6 +45,7 @@ const Form = ({setUsername}) => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    setLoading(true)
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/${state === "Registrar" ? "registrar" :"login"}`,
@@ -56,20 +57,34 @@ const Form = ({setUsername}) => {
         toast.success("Conta criada com sucesso!")
         setState("login")
       } else {
-        const {username, email} = response.data
+        const {username, email, isVerified} = response.data
+        console.log(response.data)
 
         setUsername(username);
         setUser({
           username,
           email,
         })
+
+        loginUser(username, isVerified);
         toast.success("login realizado com sucesso!")
-        navigate('/')   
+
+        if(!isVerified) {
+          toast.info("Sua conta ainda não foi verificada.")
+          navigate('/verifyAccount');
+        } else {
+          navigate('/')
+        }
+
+        
+        
       }
 
     } catch (error) {
       console.log(error);
       toast.error("Erro ao criar conta. Tente novamente!")
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -183,7 +198,7 @@ const Form = ({setUsername}) => {
 
         <p className="p-forgetP"><Link to = '/forgetPassword' className="p-forgetP">Esqueceu a senha?</Link></p>
 
-        <button className="button-submit" type="submit">{state}</button>
+        <button disabled={loading} className="button-submit" type="submit">{loading ? 'Carregando...' : state}</button>
 
         {state === 'Registrar' ? (
         <p className="Red-form">Já tem uma conta?
