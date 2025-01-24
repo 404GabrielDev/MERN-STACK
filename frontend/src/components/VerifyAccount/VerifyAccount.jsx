@@ -3,8 +3,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useAuth from "../AuthContext/useAuth";
+import { Link } from "react-router-dom";
 
 const VerifyAccount = () => {
+  const { setUser, loading, setLoading } = useAuth();
+
   const navigate = useNavigate();
 
   const [verify, setVerify] = useState(false);
@@ -14,13 +18,13 @@ const VerifyAccount = () => {
   });
 
   const [formOtp, setFormOtp] = useState({
-    email:"",
-    otp:""
-  })
+    email: "",
+    otp: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if(!verify) {
+    if (!verify) {
       setFormData({
         ...formData,
         [name]: value,
@@ -29,32 +33,38 @@ const VerifyAccount = () => {
       setFormOtp({
         ...formOtp,
         [name]: value,
-      })
+      });
     }
-    
   };
 
   const submitHandle = async (e) => {
     e.preventDefault();
 
+    setLoading(true)
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/${verify ? "verifyEmailAccount" : "sendOtpEmail"}`,
+        `${import.meta.env.VITE_BACKEND_URL}/${
+          verify ? "verifyEmailAccount" : "sendOtpEmail"
+        }`,
         verify === false ? formData : formOtp,
         { withCredentials: true }
       );
-      if(verify === false) {
+      if (verify === false) {
         toast.success("Códico enviado com sucesso ao seu email!");
-        setVerify(true)
+        setVerify(true);
       } else {
-        toast.success("Email Verificado com Sucesso!")
-        navigate('/')
+        toast.success("Email Verificado com Sucesso!");
+        setUser((prevUser) => ({
+          ...prevUser,
+          isVerified: true,
+        }));
+        navigate("/");
       }
-      
-        
     } catch (error) {
       console.log("houve um erro na requisição", error);
       toast.error("Erro ao enviar o códico, certifique seu email digitado");
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -89,20 +99,19 @@ const VerifyAccount = () => {
         <>
           <form onSubmit={submitHandle} className="container-Verify">
             <div className="container-emailVerify">
-            <p>Certifique de que está tudo correto!</p>
+              <p>Certifique de que está tudo correto!</p>
               <div className="emailVerify">
-              <label htmlFor="verifyEmail">Confirmando Seu email</label>
-              <input
-                type="email"
-                name="email"
-                value={formOtp.email}
-                id="verifyEmail"
-                required
-                placeholder="email"
-                onChange={handleChange}
-              />
+                <label htmlFor="verifyEmail">Confirmando Seu email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formOtp.email}
+                  id="verifyEmail"
+                  required
+                  placeholder="email"
+                  onChange={handleChange}
+                />
               </div>
-              
             </div>
 
             <div className="container-inputOtp">
@@ -123,9 +132,19 @@ const VerifyAccount = () => {
         </>
       )}
 
-      <button id="button-sendOtp" type="submit">
-        Enviar
+      <button disabled={loading} id="button-sendOtp" type="submit">
+        {loading ? "Carregando..." : "Enviar"}
       </button>
+
+      <div className="skipVerify">
+        {!verify && (
+          <section>
+            <Link to="/home" className="link-v2">
+              Deixar pra mais tarde!
+            </Link>
+          </section>
+        )}
+      </div>
     </form>
   );
 };

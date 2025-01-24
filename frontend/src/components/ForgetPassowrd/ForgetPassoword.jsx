@@ -3,8 +3,11 @@ import "./ForgetPassword.css";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../AuthContext/useAuth";
 
 const ForgetPassoword = () => {
+
+  const {loading, setLoading} = useAuth()
   const navigate = useNavigate()
   const [forgetPassword, setForgetPassword] = useState(false);
 
@@ -38,6 +41,8 @@ const ForgetPassoword = () => {
   const submitCamp = async (e) => {
     e.preventDefault();
 
+    setLoading(true)
+
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/forget-password`,
@@ -50,11 +55,14 @@ const ForgetPassoword = () => {
     } catch (error) {
       console.log(error);
       toast.error("Erro ao enviar o códico, certifique seu email digitado");
+    } finally {
+      setLoading(false)
     }
   };
 
   const submitNewPassword = async (e) => {
     e.preventDefault();
+    setLoading(true)
 
     try {
       const response = await axios.post(
@@ -70,6 +78,8 @@ const ForgetPassoword = () => {
       toast.error(
         "Erro ao alterar a senha, certifique seu email e tente novamente!"
       );
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -134,7 +144,7 @@ const ForgetPassoword = () => {
               onChange={handleChange}
             />
           </div>
-          <button id="b-senha" type="submit">Redefinir Senha</button>
+          <button disabled={loading} id="b-senha" type="submit">{loading ? "Carregando..." : "Redefinir Senha"}</button>
         </div>
       )}
     </form>
