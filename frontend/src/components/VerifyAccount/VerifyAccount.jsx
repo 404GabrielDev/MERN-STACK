@@ -61,8 +61,9 @@ const VerifyAccount = () => {
         navigate("/");
       }
     } catch (error) {
-      console.log("houve um erro na requisição", error);
-      toast.error("Erro ao enviar o códico, certifique seu email digitado");
+      const errorMessage = error.response?.data?.message || "Erro desconhecido"
+      console.log(error);
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }

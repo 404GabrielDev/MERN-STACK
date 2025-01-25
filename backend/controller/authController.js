@@ -80,7 +80,8 @@ export const login = catchAsync(async(req, res, next) => {
     if(!user || !(await user.correctPassword(password, user.password))) {
         return next(new appError("Email ou senha incorretos", 401))
     }
-    res.json({status:200, message:"Logado com sucesso", username:user.username, email:user.email, isVerified:user.isVerified})
+
+    createSendToken(user, 200, res, "Logado com sucesso")
 })
 
 
@@ -94,7 +95,7 @@ export const sendOtpEmail = catchAsync(async(req, res, next) => {
 
     const user = await User.findOne({email})
     if(!user) {
-        return next(new appError("Usuario não encontrado", 404))
+        return next(new appError("Usuario não encontrado ou esse email não existe", 404))
     }
 
     const otp = generateOtp()
@@ -141,7 +142,7 @@ export const verifyEmailAccount = catchAsync(async(req, res, next) => {
     
     //verificar se o usuario existe
     if(!user) {
-        return next(new appError("Usuario não encontrado", 400))
+        return next(new appError("Usuario não encontrado ou esse email não existe", 400))
     }
 
     //validar se o codico otp corresponde
@@ -172,7 +173,7 @@ export const forgetPassword = catchAsync(async (req, res, next) => {
     const user = await User.findOne({email});
 
     if(!user) {
-        return next(new appError("Usuario não encontrado", 404))
+        return next(new appError("Usuario não encontrado ou esse email não existe", 404))
     }
     
 
