@@ -1,10 +1,21 @@
 .container-home {
-    background-image: url('/wallpaperRobot4.jpg');
     background-position: center;
     background-size: cover;
     width: 100%;
     height: 100vh;
     color: #ff00d0;
+}
+
+.wallpaper-logged-in {
+    background-image: url('/wallpaperRobot4.jpg');
+}
+
+.wallpaper-logged-out {
+    background-image: url('/wallpaperRobot5.jpg');
+}
+
+.wallpaper-new-user {
+    background-image: url('/wallpaperRobot7.jpg');
 }
 
 .title-home {

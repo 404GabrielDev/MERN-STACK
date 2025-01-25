@@ -7,7 +7,7 @@ const Home = () => {
   const { user } = useAuth();
 
   return (
-    <main className="container-home">
+    <main className={`container-home ${!user ? 'wallpaper-new-user' : user.isVerified ? 'wallpaper-logged-in' : 'wallpaper-logged-out'}`}>
       {user ? (
         <div className="container-home-user">
           <section className="container-name-user">

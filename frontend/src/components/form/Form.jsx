@@ -57,8 +57,7 @@ const Form = ({setUsername}) => {
         toast.success("Conta criada com sucesso!")
         setState("login")
       } else {
-        const {username, email, isVerified} = response.data
-        console.log(response.data)
+        const {username, email, isVerified} = response.data.data
 
         setUsername(username);
         setUser({
@@ -81,8 +80,10 @@ const Form = ({setUsername}) => {
       }
 
     } catch (error) {
+      const errorMessage = error.response?.data?.message || "Erro desconhecido"
       console.log(error);
-      toast.error("Erro ao criar conta. Tente novamente!")
+      toast.error(errorMessage)
+
     } finally {
       setLoading(false)
     }

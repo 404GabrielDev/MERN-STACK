@@ -53,8 +53,9 @@ const ForgetPassoword = () => {
       toast.success("Email enviado com sucesso!");
       setForgetPassword(true);
     } catch (error) {
+      const errorMessage = error.response?.data?.message || "Erro desconhecido"
       console.log(error);
-      toast.error("Erro ao enviar o códico, certifique seu email digitado");
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
@@ -74,10 +75,9 @@ const ForgetPassoword = () => {
       toast.success("Senha alterada com sucesso! Use sua nova senha para fazer login e acessar sua conta!")
       navigate('/')
     } catch (error) {
+      const errorMessage = error.response?.data?.message || "Erro desconhecido"
       console.log(error);
-      toast.error(
-        "Erro ao alterar a senha, certifique seu email e tente novamente!"
-      );
+      toast.error(errorMessage)
     } finally {
       setLoading(false)
     }
