@@ -107,23 +107,22 @@ VITE_BACKEND_URL=endereço da URL do backend, como por exemplo a ultilizada no p
 ```
 npm run dev
 ```
-### Testes
 
-Para rodar os testes:
-
-npm test
-
-Contribuição
+### Para Contribuição
 
 Fork o repositório.
-
+```
 Crie uma branch (git checkout -b feature/nova-feature).
-
+```
+```
 Commit suas alterações (git commit -m 'Adiciona nova feature').
-
+```
+```
 Push para o repositório (git push origin feature/nova-feature).
+```
 
-Abra um Pull Request.
+### Abra um Pull Request.
+---
 
 Licença
 
