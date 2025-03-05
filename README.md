@@ -1,69 +1,70 @@
 # Autenticação - MERN STACK
 
+## Descrição
+
+O **Authentication MERN Stack** é um projeto focado na implementação de uma autenticação manual sem dependência de ferramentas externas. Os usuários podem:
+
+- Registrar-se
+- Logar
+- Verificar a conta
+- Redefinir a senha através de um código OTP enviado por e-mail
+
+Tudo isso garantindo um sistema de segurança eficiente e completo!
+
+---
+
+## Funcionalidades
+
+- **Registro de usuário** com senha criptografada
+- **Login seguro**
+- **Verificação de conta** via OTP enviado por e-mail
+- **Recuperação de senha** via OTP e redefinição de credenciais
+- **Autenticação JWT**
+
+---
+
+## Tecnologias Utilizadas
+
+### Frontend
+
+- **React + Vite**
+- **JavaScript**
+- **Dotenv** (para variáveis de ambiente)
+- **Axios** (para requisições HTTP)
+- **CSS puro**
+
+### Backend
+
+- **Node.js + Express.js**
+- **MongoDB + Mongoose**
+- **Bcryptjs** (para criptografar senhas)
+- **Cookie-Parser** (para manipulação de cookies)
+- **Cors** (para permitir comunicação entre diferentes origens)
+- **Dotenv** (para variáveis de ambiente)
+- **Jsonwebtoken (JWT)** (para autenticação)
+- **Nodemailer** (para envio de código OTP via e-mail)
+
+---
+
+## Estrutura do Projeto
 
 
-
-Descrição
-
-O Authentication MERN Stack é um projeto focado na implementação de uma autenticação manual sem dependência de ferramentas externas. Os usuários podem registrar-se, logar, verificar a conta, redefinir a senha através de um código OTP enviado por e-mail, garantindo um sistema de segurança eficiente e completo.
-
-Funcionalidades
-
-Registro de usuário com senha criptografada
-
-Login seguro
-
-Verificação de conta via OTP enviado por e-mail
-
-Recuperação de senha via OTP e redefinição de credenciais
-
-Autenticação JWT
-
-Tecnologias Utilizadas
-
-Frontend (frontend)
-
-React + Vite
-
-JavaScript
-
-Dotenv (para variáveis de ambiente)
-
-Axios (para requisições HTTP)
-
-CSS puro
-
-Backend (backend)
-
-Node.js + Express.js
-
-MongoDB + Mongoose
-
-Bcryptjs (para criptografar senhas)
-
-Cookie-Parser (para manipulação de cookies)
-
-Cors (para permitir comunicação entre diferentes origens)
-
-Dotenv (para variáveis de ambiente)
-
-Jsonwebtoken (JWT) (para autenticação)
-
-Nodemailer (para envio de código OTP via e-mail)
-
-Estrutura do Projeto
 
 AUTHENTICATION MERN STACK
 ├── frontend/   # Interface do usuário (React + Vite)
 ├── backend/    # Servidor e banco de dados (Node.js + Express + MongoDB)
 └── README.md   # Documentação
 
-Configuração e Instalação
+---
 
-1. Clonar o repositório
+## Configuração e Instalação
 
+### 1. Clonar o repositório
+
+```bash
 git clone https://github.com/seuusuario/Authentication-MERN-Stack.git
 cd Authentication-MERN-Stack
+
 
 2. Configurar o Backend
 
