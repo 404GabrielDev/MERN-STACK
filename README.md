@@ -124,6 +124,16 @@ Push para o repositório (git push origin feature/nova-feature).
 ### Abra um Pull Request.
 ---
 
+#### screenshots do Projeto:
+
+![Mobile](frontend/public/screenshots-forReadme/projectHome.png)
+![Mobile](frontend/public/screenshots-forReadme/projectRegistro.png)
+![Mobile](frontend/public/screenshots-forReadme/projectLogado.png)
+![Desktop](frontend/public/screenshots-forReadme/mongodb.png)
+
+
+
+
 Licença
 
 #### Este projeto está sob a Licença MIT.
