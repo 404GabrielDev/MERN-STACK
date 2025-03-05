@@ -64,15 +64,17 @@ AUTHENTICATION MERN STACK
 ```bash
 git clone https://github.com/seuusuario/Authentication-MERN-Stack.git
 cd Authentication-MERN-Stack
+```
 
 
-2. Configurar o Backend
-
+### 2. Configurar o Backend
+```
 cd backend
 npm install
+```
 
-Crie um arquivo .env no diretório backend com as seguintes variáveis:
-
+### Crie um arquivo .env no diretório backend com as seguintes variáveis:
+```
 NODE_ENV="development"
 DB_PASS=sua senha do mongoDB
 DB='mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority' obs: substitua pelas as suas informações, geralmente no painel do mongoDB
@@ -84,25 +86,28 @@ JWT_COOKIE_EXPIRES_IN = data de expiração do cookie, como  por exemplo "90"
 
 EMAIL_PASS=sua senha do email, dependendo de qual serviço irá ultilizar
 EMAIL_USER=seu email de usuario
+```
 
-Inicie o backend:
+### Inicie o backend:
 
-npm start
+### npm start
 
-3. Configurar o Frontend
-
+### 3. Configurar o Frontend
+```
 cd /frontend
 npm install
+```
 
-Crie um arquivo .env no diretório frontend:
-
+### Crie um arquivo .env no diretório frontend:
+```
 VITE_BACKEND_URL=endereço da URL do backend, como por exemplo a ultilizada no projeto: 'http://localhost:8000/api/v1'
+```
 
-Inicie o frontend:
-
+### Inicie o frontend:
+```
 npm run dev
-
-Testes
+```
+### Testes
 
 Para rodar os testes:
 
@@ -122,13 +127,13 @@ Abra um Pull Request.
 
 Licença
 
-Este projeto está sob a Licença MIT.
+#### Este projeto está sob a Licença MIT.
 
-Contato
+### Contato
 
-Nome: Gabriel
+#### Nome: Gabriel
 
-Email: joaogabriell.ssm@gmail.com
+#### Email: joaogabriell.ssm@gmail.com
 
 
 
