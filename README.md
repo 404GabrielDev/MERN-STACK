@@ -74,7 +74,7 @@ npm install
 ```
 
 ### Crie um arquivo .env no diretório backend com as seguintes variáveis:
-```
+```env
 NODE_ENV="development"
 DB_PASS=sua senha do mongoDB
 DB='mongodb+srv://<username>:<password>@<cluster-url>/<database>?retryWrites=true&w=majority' obs: substitua pelas as suas informações, geralmente no painel do mongoDB
