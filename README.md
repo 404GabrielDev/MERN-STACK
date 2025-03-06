@@ -132,9 +132,31 @@ Push para o repositório (git push origin feature/nova-feature).
 ### **Página de Registro**
 ![Tela de Registro](frontend/public/screenshots/projectRegistro.png)
 ---
-### **Página Logado**
-![Logado](frontend/public/screenshots/projectLogado.png)
+
+### **Página de Login**
+![Tela de Registro](frontend/public/screenshots/inputLogin.png)
 ---
+
+### **Página de Registro**
+![Tela de Registro](frontend/public/screenshots/inputVerification.png)
+---
+
+### **Página pra verificar o email**
+![Tela de Registro](frontend/public/screenshots/inputOtp.png)
+---
+
+### **Códico no email**
+![Tela de Registro](frontend/public/screenshots/codeOtp.png)
+---
+
+### **Página de Registro**
+![Tela de Registro](frontend/public/screenshots/sendOtp.png)
+---
+
+### **Página Logado e verificado**
+![Logado](frontend/public/screenshots/emailVerified.png)
+---
+
 ### **Dados salvos no banco de dados**
 ![Dados salvos no banco de dados](frontend/public/screenshots/Mongodb.png)
 ---
