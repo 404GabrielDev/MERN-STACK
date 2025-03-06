@@ -126,10 +126,10 @@ Push para o repositório (git push origin feature/nova-feature).
 
 #### screenshots do Projeto:
 
-![Mobile](frontend/public/screenshots-forReadme/projectHome.png)
-![Mobile](frontend/public/screenshots-forReadme/projectRegistro.png)
-![Mobile](frontend/public/screenshots-forReadme/projectLogado.png)
-![Desktop](frontend/public/screenshots-forReadme/mongodb.png)
+![Pagina-Principal](frontend/public/screenshots/projectHome.png)
+![Tela de Registro](frontend/public/screenshots/projectRegistro.png)
+![Logado](frontend/public/screenshots/projectLogado.png)
+![Dados salvos no banco de dados](frontend/public/screenshots/mongodb.png)
 
 
 
