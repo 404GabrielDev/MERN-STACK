@@ -129,7 +129,7 @@ Push para o repositório (git push origin feature/nova-feature).
 ![Pagina-Principal](frontend/public/screenshots/projectHome.png)
 ![Tela de Registro](frontend/public/screenshots/projectRegistro.png)
 ![Logado](frontend/public/screenshots/projectLogado.png)
-![Dados salvos no banco de dados](frontend/public/screenshots/mongodb.png)
+![Dados salvos no banco de dados](frontend/public/screenshots/Mongodb.png)
 
 
 
