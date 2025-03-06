@@ -137,7 +137,7 @@ Push para o repositório (git push origin feature/nova-feature).
 ![Tela de Registro](frontend/public/screenshots/inputLogin.png)
 ---
 
-### **Página de Registro**
+### **Página de Verificação**
 ![Tela de Registro](frontend/public/screenshots/inputVerification.png)
 ---
 
