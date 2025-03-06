@@ -149,7 +149,7 @@ Push para o repositório (git push origin feature/nova-feature).
 ![Tela de Registro](frontend/public/screenshots/codeOtp.png)
 ---
 
-### **Página de Registro**
+### **Verificando códico do Email**
 ![Tela de Registro](frontend/public/screenshots/sendOtp.png)
 ---
 
