@@ -126,9 +126,13 @@ Push para o repositório (git push origin feature/nova-feature).
 
 #### screenshots do Projeto:
 
+**Página Principal**
 ![Pagina-Principal](frontend/public/screenshots/projectHome.png)
+**Página de Registro**
 ![Tela de Registro](frontend/public/screenshots/projectRegistro.png)
+**Página Logado**
 ![Logado](frontend/public/screenshots/projectLogado.png)
+**Dados salvos no banco de dados**
 ![Dados salvos no banco de dados](frontend/public/screenshots/Mongodb.png)
 
 
